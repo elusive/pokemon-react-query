@@ -1,14 +1,18 @@
 import axios from 'axios'
 import './App.css'
-import  {Pokemon} from './models/pokemon';
+import {PokemonRow} from './components/PokemonRow/pokemon-row';
+import  {PokemonModel} from './models/pokemon.model';
+import { useEffect, useState } from 'react';
 
 export function App()  {
-  let pokemon: Array<Pokemon>;
-  axios.get('api/pokemon')
-    .then(resp => {
-      pokemon = resp.data;
-      console.log(resp);
-    });
+  const [data, setData] = useState([]);
+  let pokemon: Array<PokemonModel>;
+   
+  useEffect(() => {
+    axios.get('api/pokemon')
+      .then(resp => setData(resp.data))
+      .catch(err => console.log(err))
+  }, []);
 
   return (
     <>
@@ -20,7 +24,9 @@ export function App()  {
       <h1>Pokemon Search</h1>
       <table width="100%">
           <tbody>
-            <tr></tr>
+            {
+              data.slice(0,20).map(x => (<PokemonRow pokemon={x}/>)) 
+            }
           </tbody>
       </table>
       <p className="read-the-docs">
