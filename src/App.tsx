@@ -1,18 +1,14 @@
-import axios from 'axios'
 import './App.css'
 import {PokemonRow} from './components/PokemonRow/pokemon-row';
-import  {PokemonModel} from './models/pokemon.model';
-import { useEffect, useState } from 'react';
+import usePokemonList from './hooks/usePokemonList';
 
 export function App()  {
-  const [data, setData] = useState([]);
-  let pokemon: Array<PokemonModel>;
-   
-  useEffect(() => {
-    axios.get('api/pokemon')
-      .then(resp => setData(resp.data))
-      .catch(err => console.log(err))
-  }, []);
+  const { data,isSuccess, isError, isFetching} = usePokemonList();
+
+  if (isFetching) return <h4>Loading articles...</h4>
+  if (isError) return <h4 className='error'>Loading articles failed :(</h4>
+  if (isSuccess && data.length === 0) return <p>No Pokemon are here... yet.</p>
+
 
   return (
     <>
@@ -25,7 +21,7 @@ export function App()  {
       <table width="100%">
           <tbody>
             {
-              data.slice(0,20).map(x => (<PokemonRow pokemon={x}/>)) 
+              data?.map(x => (<PokemonRow pokemon={x}/>)) 
             }
           </tbody>
       </table>
