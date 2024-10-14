@@ -1,7 +1,14 @@
-import { useState } from 'react'
+import axios from 'axios'
 import './App.css'
+import  {Pokemon} from './models/pokemon';
 
-function App() {
+export function App()  {
+  let pokemon: Array<Pokemon>;
+  axios.get('api/pokemon')
+    .then(resp => {
+      pokemon = resp.data;
+      console.log(resp);
+    });
 
   return (
     <>
