@@ -1,8 +1,10 @@
 import { PokemonModel } from "../../models/pokemon.model";
 
-export interface PokemonRowProps {
-    pokemon: PokemonModel
+interface PokemonRowProps {
+    pokemon: PokemonModel,
+    onClick: (pokemon: PokemonModel) => void
 }
+
 export const PokemonRow = ({pokemon}: PokemonRowProps) => (
     <>
         <tr key={pokemon.id}>
@@ -15,3 +17,5 @@ export const PokemonRow = ({pokemon}: PokemonRowProps) => (
         </tr>
     </>
 );
+
+export default PokemonRow;

@@ -4,6 +4,7 @@ import { PokemonModel } from '../models/pokemon.model';
 
 type PokemonState = {
     selectedPokemon: PokemonModel | undefined,
+    setSelectedPokemon: (p: PokemonModel | undefined) => void;
     filters: string[],
     addFilter: (f: string) => void;
     removeFilter: (f: string) => void;
@@ -13,7 +14,7 @@ const usePokemonStore = create(
   persist<PokemonState>(
     (set) => ({ 
       selectedPokemon: undefined,
-      setSelectedPokemon: (p: PokemonModel) => {
+      setSelectedPokemon: (p: PokemonModel | undefined) => {
           set(() => ({
               selectedPokemon: p
           }));
