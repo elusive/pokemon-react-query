@@ -9,6 +9,9 @@ export const PokemonRow = ({pokemon}: PokemonRowProps) => (
             <td>{pokemon.name.english}</td>
             <td>{pokemon.name.chinese}</td>
             <td>{pokemon.type.join(', ')}</td>
+            <td>
+                <button onClick={() => onClick(pokemon)}>More Info</button>
+            </td>
         </tr>
     </>
 );
