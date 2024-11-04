@@ -4,9 +4,7 @@ import styled from '@emotion/styled';
 const TwoColumnGrid = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: 80% 20%;  
-    grid-column-gap: 1rem;
-    margin: auto auto;
+    grid-template-columns: 70% 30%;
 `;
 
 interface LayoutProps {

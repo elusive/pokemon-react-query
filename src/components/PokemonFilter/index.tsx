@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 /*  Styled Components */
 const Input = styled.input`
-    width: 100%;
+    width: 80%;
     padding: 0.2rem;
     font-size: large;
 }`;

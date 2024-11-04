@@ -1,7 +1,4 @@
 import { PokemonModel } from "../../models/pokemon.model";
-import styled from '@emotion/styled';
-
-
 
 interface PokemonRowProps {
     pokemon: PokemonModel,
