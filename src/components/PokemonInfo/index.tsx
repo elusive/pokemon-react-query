@@ -1,14 +1,14 @@
-import PokemonType from "../../models/pokemon.type";
+import { PokemonModel } from "../../models/pokemon.model";
 
-const PokemonInfo = ({ name: { english }, base }) => (
+const PokemonInfo = (pokemon: PokemonModel) => (
     <div>
-      <h2>{english}</h2>
+      <h2>{pokemon.name.english}</h2>
       <table>
         <tbody>
-          {Object.keys(base).map((key) => (
+          {Object.keys(pokemon.base).map((key) => (
             <tr key={key}>
               <td>{key}</td>
-              <td>{base[key]}</td>
+              <td>{pokemon.base[key]}</td>
             </tr>
           ))}
         </tbody>
@@ -16,6 +16,6 @@ const PokemonInfo = ({ name: { english }, base }) => (
     </div>
   );
 
-PokemonInfo.propTypes = PokemonType;
+
 
 export default PokemonInfo;

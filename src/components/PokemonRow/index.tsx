@@ -1,18 +1,21 @@
 import { PokemonModel } from "../../models/pokemon.model";
+import styled from '@emotion/styled';
+
+
 
 interface PokemonRowProps {
     pokemon: PokemonModel,
-    onClick: (pokemon: PokemonModel) => void
+    click: (pokemon: PokemonModel) => void
 }
 
-export const PokemonRow = ({pokemon}: PokemonRowProps) => (
+export const PokemonRow = ({pokemon, click}: PokemonRowProps) => (
     <>
-        <tr key={pokemon.id}>
+        <tr>
             <td>{pokemon.name.english}</td>
             <td>{pokemon.name.chinese}</td>
             <td>{pokemon.type.join(', ')}</td>
             <td>
-                <button onClick={() => onClick(pokemon)}>More Info</button>
+                <button onClick={() => click(pokemon)}>More Info</button>
             </td>
         </tr>
     </>
